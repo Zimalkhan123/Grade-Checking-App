@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Grade Checker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Grade Checker</h1>
+        <form id="gradeForm">
+            <label for="percent">Enter Percentage (0-100):</label>
+            <input type="number" id="percent" min="0" max="100" required>
+            <button type="button" onclick="checkGrade()">Check Grade</button>
+        </form>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function checkGrade() {
+            const percent = parseFloat(document.getElementById("percent").value);
+            let grade = '';
+
+            if (percent >= 80) {
+                grade = 'A+';
+            } else if (percent >= 70) {
+                grade = 'A';
+            } else if (percent >= 60) {
+                grade = 'B';
+            } else if (percent >= 50) {
+                grade = 'C';
+            } else {
+                grade = 'F';
+            }
+
+            document.getElementById("result").textContent = `Grade: ${grade}`;
+        }
+
+        document.getElementById("gradeForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            checkGrade();
+        });
+    </script>
+</body>
+</html>
+
